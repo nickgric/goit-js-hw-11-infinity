@@ -34,6 +34,8 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const axios = require('axios').default;
 
+var debounce = require('lodash.debounce');
+
 let gallery = new SimpleLightbox('.gallery a', {});
 
 const refs = {
@@ -46,7 +48,7 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', submit);
-refs.more.addEventListener('click', load);
+window.addEventListener('scroll', debounce(load, 500));
 refs.more.style.visibility = 'hidden';
 
 let page;
@@ -70,10 +72,18 @@ async function submit(e) {
 
   painter(images.hits);
 
-  refs.more.style.visibility = 'visible';
+  // refs.more.style.visibility = 'visible';
 }
 
 async function load() {
+  let windowRelativeBottom =
+    document.documentElement.getBoundingClientRect().bottom;
+  console.log(windowRelativeBottom);
+
+  if (windowRelativeBottom > document.documentElement.clientHeight + 100) {
+    return;
+  }
+
   page = page + 1;
 
   let images = await fetch(query, page);
@@ -83,7 +93,7 @@ async function load() {
     refs.more.style.visibility = 'hidden';
     return;
   }
-  Notify.success('👍 OK, 20 more images was added in search-results area');
+  Notify.success('👍 OK, 40 more images was added in search-results area');
 
   painter(images.hits);
 }
@@ -105,16 +115,4 @@ function painter(images) {
   });
 
   gallery.refresh();
-  scroller();
-}
-
-function scroller() {
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight * 20,
-    behavior: 'smooth',
-  });
 }
