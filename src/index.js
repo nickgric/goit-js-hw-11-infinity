@@ -93,6 +93,7 @@ async function load() {
     refs.more.style.visibility = 'hidden';
     return;
   }
+
   Notify.success('👍 OK, 40 more images was added in search-results area');
 
   painter(images.hits);
