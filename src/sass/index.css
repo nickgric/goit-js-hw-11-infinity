@@ -1,0 +1,110 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: #5594d6;
+  border-bottom: 1px solid black;
+}
+
+.search-more-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-input {
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  padding: 8px;
+  width: 320px;
+  border-radius: 0.5rem;
+  border-style: groove;
+  border: 1px solid black;
+}
+.search-input::-moz-placeholder {
+  color: gray;
+}
+.search-input:-ms-input-placeholder {
+  color: gray;
+}
+.search-input::placeholder {
+  color: gray;
+}
+.search-input:focus {
+  outline: 0;
+}
+.search-input:hover, .search-input:focus {
+  background-color: #eee;
+}
+
+.search-button,
+.search-more-button {
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  background-color: white;
+  padding: 8px;
+  width: 120px;
+  border-radius: 0.5rem;
+  border-style: groove;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.search-button:hover, .search-button:focus,
+.search-more-button:hover,
+.search-more-button:focus {
+  background-color: #eee;
+}
+
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+  padding: 30px;
+}
+
+.search-results-stats {
+  list-style: none;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.notiflix-notify {
+  border-radius: 0.5rem;
+  border-style: groove;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 8px;
+  width: 240px;
+}
+
+.search-results-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border-style: groove;
+  border: 1px solid black;
+  padding: 15px;
+  height: 250px;
+  width: 200px;
+  color: black;
+  text-decoration: none;
+}/*# sourceMappingURL=index.css.map */

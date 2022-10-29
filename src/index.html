@@ -8,7 +8,21 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <div class="search-box">
+    <form class="search-form" id="search-form">
+      <input
+      class="search-input"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="👉 Type key-word here..."
+      />
+      <button class="search-button" type="submit">🔍 Search</button>
+    </div>
+     <div class="search-results gallery"></div>
+    <div class="search-more-box">
+      <button class="search-more-button" type="submit">🪧 Show more</button>
+    </div>
+    </form>
   </body>
 </html>
