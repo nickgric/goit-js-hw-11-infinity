@@ -53,13 +53,20 @@ refs.more.style.visibility = 'hidden';
 
 let page;
 let query;
+let totalPages;
 
 async function submit(e) {
   e.preventDefault();
-  refs.results.innerHTML = '';
 
   query = refs.input.value;
   page = 1;
+
+  if (query.trim() === '') {
+    Notify.failure('👻 Type your query please!');
+    return;
+  }
+
+  refs.results.innerHTML = '';
 
   let images = await fetch(query, page);
 
@@ -70,9 +77,13 @@ async function submit(e) {
 
   Notify.success(`👍 OK, we already found ${images.totalHits} images`);
 
+  totalPages = Math.trunc(images.totalHits / 40) + 1;
+
   painter(images.hits);
 
-  // refs.more.style.visibility = 'visible';
+  if (totalPages === page) {
+    return;
+  }
 }
 
 async function load() {
@@ -86,13 +97,15 @@ async function load() {
 
   page = page + 1;
 
-  let images = await fetch(query, page);
-
-  if (images.hits.length === 0) {
-    Notify.failure('😱 Sorry, there are no more images matching your query...');
+  if (page > totalPages) {
+    Notify.failure(
+      "😵 We're sorry, but you've reached the end of search results..."
+    );
     refs.more.style.visibility = 'hidden';
     return;
   }
+
+  let images = await fetch(query, page);
 
   Notify.success('👍 OK, 40 more images was added in search-results area');
 
